@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { FiSearch } from 'react-icons/fi';
+// import { FiSearch } from 'react-icons/fi';
 import ProjectSingle from './ProjectSingle';
 import { ProjectsContext } from '../../context/ProjectsContext';
 import ProjectsFilter from './ProjectsFilter';
@@ -8,7 +8,7 @@ const ProjectsGrid = () => {
 	const {
 		projects,
 		searchProject,
-		setSearchProject,
+		// setSearchProject,
 		searchProjectsByTitle,
 		selectProject,
 		setSelectProject,
@@ -33,7 +33,7 @@ const ProjectsGrid = () => {
                         mb-3
                         "
 				>
-					Search projects by title or filter by category
+					Search projects by category filter below
 				</h3>
 				<div
 					className="
@@ -45,7 +45,8 @@ const ProjectsGrid = () => {
                         gap-3
                         "
 				>
-					<div className="flex justify-between gap-2">
+					<div></div>
+					{/* <div className="flex justify-between gap-2">
 						<span		
 							className="
                                 hidden
@@ -87,7 +88,7 @@ const ProjectsGrid = () => {
 							placeholder="Search Projects"
 							aria-label="Name"
 						/>
-					</div>
+					</div> */}
 
 					<ProjectsFilter setSelectProject={setSelectProject} />
 				</div>
@@ -100,7 +101,7 @@ const ProjectsGrid = () => {
 							title={project.title}
 							category={project.category}
 							image={project.img}
-							key={project.id}
+							id={project.id}
 						/>
 					))
 					: searchProject
@@ -109,7 +110,7 @@ const ProjectsGrid = () => {
 								title={project.title}
 								category={project.category}
 								image={project.img}
-								key={project.id}
+								id={project.id}
 							/>
 						))
 						: projects.map((project) => (
@@ -117,7 +118,7 @@ const ProjectsGrid = () => {
 								title={project.title}
 								category={project.category}
 								image={project.img}
-								key={project.id}
+								id={project.id}
 							/>
 						))}
 			</div>

@@ -1,8 +1,13 @@
 import { useContext } from 'react';
 import SingleProjectContext from '../../context/SingleProjectContext';
+import { useParams } from 'react-router-dom';
 
 const ProjectInfo = () => {
 	const { singleProjectData } = useContext(SingleProjectContext);
+	const { id } = useParams();
+	const key = id-1;
+	
+	
 
 	return (
 		<div className="block sm:flex gap-0 sm:gap-10 mt-14">
@@ -10,10 +15,10 @@ const ProjectInfo = () => {
 				{/* Single project client details */}
 				<div className="mb-7">
 					<p className="font-general-regular text-2xl font-semibold text-secondary-dark dark:text-secondary-light mb-2">
-						{singleProjectData.ProjectInfo.ClientHeading}
+						{singleProjectData.project[key].ProjectInfo.ClientHeading}
 					</p>
 					<ul className="leading-loose">
-						{singleProjectData.ProjectInfo.CompanyInfo.map(
+						{singleProjectData.project[key].ProjectInfo.CompanyInfo.map(
 							(info) => {
 								return (
 									<li
@@ -43,27 +48,27 @@ const ProjectInfo = () => {
 				{/* Single project objectives */}
 				<div className="mb-7">
 					<p className="font-general-regular text-2xl font-semibold text-ternary-dark dark:text-ternary-light mb-2">
-						{singleProjectData.ProjectInfo.ObjectivesHeading}
+						{singleProjectData.project[key].ProjectInfo.ObjectivesHeading}
 					</p>
 					<p className="font-general-regular text-primary-dark dark:text-ternary-light">
-						{singleProjectData.ProjectInfo.ObjectivesDetails}
+						{singleProjectData.project[key].ProjectInfo.ObjectivesDetails}
 					</p>
 				</div>
 
 				{/* Single project technologies */}
 				<div className="mb-7">
 					<p className="font-general-regular text-2xl font-semibold text-ternary-dark dark:text-ternary-light mb-2">
-						{singleProjectData.ProjectInfo.Technologies[0].title}
+						{singleProjectData.project[key].ProjectInfo.Technologies[0].title}
 					</p>
 					<p className="font-general-regular text-primary-dark dark:text-ternary-light">
-						{singleProjectData.ProjectInfo.Technologies[0].techs.join(
+						{singleProjectData.project[key].ProjectInfo.Technologies[0].techs.join(
 							', '
 						)}
 					</p>
 				</div>
 
 				{/* Single project social sharing */}
-				<div>
+				{/* <div>
 					<p className="font-general-regular text-2xl font-semibold text-ternary-dark dark:text-ternary-light mb-2">
 						{singleProjectData.ProjectInfo.SocialSharingHeading}
 					</p>
@@ -86,15 +91,15 @@ const ProjectInfo = () => {
 							}
 						)}
 					</div>
-				</div>
+				</div> */}
 			</div>
 
 			{/*  Single project right section */}
 			<div className="w-full sm:w-2/3 text-left mt-10 sm:mt-0">
 				<p className="font-general-regular text-primary-dark dark:text-primary-light text-2xl font-bold mb-7">
-					{singleProjectData.ProjectInfo.ProjectDetailsHeading}
+					{singleProjectData.project[key].ProjectInfo.ProjectDetailsHeading}
 				</p>
-				{singleProjectData.ProjectInfo.ProjectDetails.map((details) => {
+				{singleProjectData.project[key].ProjectInfo.ProjectDetails.map((details) => {
 					return (
 						<p
 							key={details.id}
